@@ -38,9 +38,9 @@ export default function Header(props) {
             <Link to='main' className='logo'>Events</Link>
             
             <ul className='nav'>
-              <Link to='one' className='nav-li'>Кино</Link>
-              <Link to='two' className='nav-li'>Фестивали</Link>  
-              <Link to='Account' className='nav-li'>Кабинет пользователя</Link>
+              {/* <Link to='Register' className='nav-li'>Зарегестрировться</Link>   */}
+              <Link to='register' className='nav-li'>Кабинет пользователя</Link>
+              <Link to='about' className='nav-li'>О нас</Link>
             </ul>
             <Link to='favourites'><FaHeart  className='event-button'/> </Link>
 
@@ -55,7 +55,7 @@ export default function Header(props) {
             )} */}
         </div>
         <div className='presentation'></div>
-
+      
     </header>
   )
 

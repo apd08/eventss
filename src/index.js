@@ -7,6 +7,7 @@ import { createStore } from 'redux'
 // import reducer form './store/reducer'
 
 import './index.css';
+// import './components/css/profile.css' //add
 import App from './App';
 import { rootReducer } from './store/reducers';
 

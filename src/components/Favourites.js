@@ -9,12 +9,15 @@ const showEvents = (props) =>{
     });
     return(
       <div>
+        <h2>Избранное</h2>
+        <div className='favourites-events'>
         {/*фигурные скобки для вывода html-кода*/}
         {props.events.map(el => ( 
           <Event onDelete={props.onDelete} key={el.id} item = {el}/>
         ))}
         {/* ?  #6 8:38 format - для корректного отображения суммы*/}
         <p className='summa'>Сумма: {new Intl.NumberFormat().format(summa)}</p> 
+        </div>
       </div>
     )
   }

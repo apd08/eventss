@@ -3,6 +3,7 @@ installed react: npm install redux
                 router (марщрутизация):  npm i react-router-dom
 
 библиотека лоя иконок: npm i react-icons
+       npm install @mui/material @ emotion/react @emotion/styled
 
 измененные названия файлов:
 Order.js = Event.js

@@ -25,16 +25,28 @@ export class Categories extends Component {
                 },
             ]
         }
+
+        // this.chooseCategory = this.chooseCategory.bind(this); 
     }
   render() {
     return (
       <div className='categories'>
         {this.state.categories.map(el => (
-            <div key={el.key} onClick={() => this.props.chooseCategory(el.key)}>{el.name}</div>
+            <div key={el.key} onClick={() => this.props.chooseCategory(el.key)}>{el.name}</div> //props
         ))}
       </div>
     )
   }
+//   chooseCategory(category){
+//     if(category === 'all') {
+//       this.setState({currentItems: this.state.items})
+//       return 
+//     }
+    
+//         this.setState({
+//           currentItems: this.state.items.filter(el => el.category === category)
+//         })
+//       }
 }
 
 export default Categories
