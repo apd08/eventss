@@ -15,6 +15,8 @@ import Register from './profile/Register'
 import AuthRootComponent from './profile/AurhRootComponent'
 import AboutUs from './components/AboutUs';
 import Search from './components/Search'
+import FilterPlace from './components/FilterPlace';
+import Cart from './components/Cart';
 
 class App extends React.Component {
   // const items1 = useSelector((state) => state.events)
@@ -22,6 +24,7 @@ class App extends React.Component {
   super(props)
     this.state = {
       events:[],
+      cart:[],
       currentItems:[],
       items: [
         {
@@ -30,6 +33,8 @@ class App extends React.Component {
         img: 'zoo1.jpg',
         desc: 'Посетите Минский зоопарк и получите незабываемые впечатления',
         category: 'Развлечение',
+        place: 'Минский зоопарк',
+        date: '24.12.2024',
         price: '20 BYN',
         },
         {
@@ -38,6 +43,8 @@ class App extends React.Component {
           img: 'balet-shhelkunchik..jpg',
           desc: 'Посетити новую постановку в "Большом театре"',
           category: 'Театр',
+          place: 'Большой театр',
+          date: '24.07.2024',
           price: '20 BYN'
           },
           {
@@ -46,6 +53,8 @@ class App extends React.Component {
             img: 'AgustD.jpg',
             desc: 'Посетити интересный фильм и откройте для себя мир k-pop',
             category: 'Фильмы',
+            place: 'Дом кино',
+            date: '12.05.2024',
             price: '50 BYN'
             },
             {
@@ -54,21 +63,53 @@ class App extends React.Component {
             img: 'cofix.jpg',
             desc: 'Выпейте вкусный кофе и зарядитесь хорошим настроением на весь день',
             category: 'Развлечение',
+            place: 'Кофикс',
+            date: '24.12.2024',
             price: '10 BYN'
             },
       ],
       showFullItem: false,
       fullItem: {},
+
+      // selectedPlace: '', // Выбранное место
+      selectedDate: null, // Выбранная дата
     }
     this.state.currentItems = this.state.items; //внцтрь currentItems при загрузке сайта изначально помещаем все элементы, которые находятся в массиве items
     this.addToEvents = this.addToEvents.bind(this); //для взаимодействия с состояниями
+    this.addToCart = this.addToCart.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this); //для взаимодействия с состояниями
+    this.deleteCart = this.deleteCart.bind(this); //для взаимодействия с состояниями
     this.chooseCategory = this.chooseCategory.bind(this); //для взаимодействия с состояниями
+    this.choosePlace = this.choosePlace.bind(this);
     this.onShowItem = this.onShowItem.bind(this); //для взаимодействия с состояниями
     this.handleSearch= this.handleSearch.bind(this); //для взаимодействия с состояниями
+    
 
 
+  }
 
+  handlePlaceChange = (place) => {
+    this.setState({ selectedPlace: place });
+    this.filterItems();
+  };
+
+  handleDateChange = (date) => {
+    this.setState({ selectedDate: date });
+    this.filterItems();
+  };
+
+  filterItems = () => {
+    const { items, selectedPlace, selectedDate } = this.state;
+
+    let filteredItems = items.filter(item => {
+      return (!selectedPlace || item.place === selectedPlace) && (!selectedDate || item.date === selectedDate);
+    });
+
+    this.setState({ currentItems: filteredItems });
+  };
+
+  componentDidMount() {
+    this.filterItems();
   }
   render(){
     return (
@@ -82,18 +123,30 @@ class App extends React.Component {
       <Routes>
         <Route path="/" exact element={(
           <>
+          
           <Categories chooseCategory={this.chooseCategory}/>
-          <Search onSearch={this.handleSearch} />
-          <Items onShowItem={this.onShowItem} items={this.state.currentItems} onAdd={this.addToEvents}/>
+          <div className='tools-bar'>
+            <Search onSearch={this.handleSearch} />
+            <FilterPlace choosePlace={this.choosePlace}/>
+        <div>
+        
+         {/* { this.currentItems.map(item => (
+            <Items key={item.id} item={item} />
+          ))} */}
+        </div>
+          </div>
+          <Items onShowItem={this.onShowItem} items={this.state.currentItems} onAdd={this.addToEvents} onAddCart={this.addToCart}/>
           </>)} />
 
         {/* <Route path="/main" element={<Items onShowItem={this.onShowItem} items={this.state.currentItems} onAdd={this.addToEvents} />} /> */}
-        <Route path="/main" exact element = {(
+        {/* <Route path="/main" exact element = {(
         <Fragment>
-          <Categories chooseCategory={this.chooseCategory}/>
-          <Search onSearch={this.handleSearch} />
+          <div className='tools-bar'>
+            <Search onSearch={this.handleSearch} />
+            <Categories chooseCategory={this.chooseCategory}/>
+          </div>
           <Items onShowItem={this.onShowItem} items={this.state.currentItems} onAdd={this.addToEvents}/> 
-          </Fragment>)}/>
+          </Fragment>)}/> */}
         {/* <Route path="/one" element={<Account />} />
         <Route path="/two" element={<Account />} /> */}
 
@@ -105,6 +158,7 @@ class App extends React.Component {
         {/* <Route path="/register" element={<AuthRootComponent />} /> */}
         <Route path="/about" element={<AboutUs/>}/>
         <Route path="/favourites" element={<Favourites events={this.state.events} onDelete={this.deleteEvent}/>} />
+        <Route path="/cart" element={<Cart cart={this.state.cart} onDeleteCart={this.deleteCart}/>} />
 
         
         <Route path="*" element={<ErrorPage/>} />
@@ -114,6 +168,8 @@ class App extends React.Component {
         {/* <Items onShowItem={this.onShowItem} items={this.state.currentItems} onAdd={this.addToEvents}/> */}
 
         {this.state.showFullItem && <ShowFullItem onAdd={this.addToEvents} onShowItem={this.onShowItem} item={this.state.fullItem}/>}
+        {this.state.showFullItem && <ShowFullItem onAddCart={this.addToCart} onShowItem={this.onShowItem} item={this.state.fullItem}/>}
+
         {/* <Footer /> */}
       </div>
     );
@@ -143,8 +199,23 @@ if(category === 'all') {
     })
   }
 
+  choosePlace(place){
+    if(place === 'all'){
+      this.setState({currentItems: this.state.items})
+      return
+    }
+
+    this.setState({
+      currentItems: this.state.items.filter(elem => elem.place === place)
+    })
+  }
+
   deleteEvent(id){
     this.setState({events: this.state.events.filter(el => el.id !== id)})
+  }
+
+  deleteCart(id){
+    this.setState({cart: this.state.cart.filter(el => el.id !== id)})
   }
 
   addToEvents(item){
@@ -159,6 +230,30 @@ if(category === 'all') {
 
     }
   }
+
+  addToCart(item){
+    let isInArray = false;
+    this.state.cart.forEach(el => {
+      if(el.id === item.id){
+        isInArray = true;
+      }
+    })
+    if(!isInArray){
+          this.setState({cart: [...this.state.cart, item] }) //добавление к текущему элементу элемента, который передастся в качестве параметра
+
+    }
+  }
 }
 
 export default App;
+
+{/* <div>
+        <select onChange={(e) => this.handlePlaceChange(e.target.value)}>
+          <option value="">All Places</option>
+          <option value="Минский зоопарк">Минский зоопарк</option>
+          <option value="Большой театр">Большой театр</option>
+          <option value="Дом кино">Дом кино</option>
+          <option value="Кофикс">Кофикс</option>
+        </select>
+        <input type="date" onChange={(e) => this.handleDateChange(e.target.value)} />
+      </div> */}

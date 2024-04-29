@@ -3,10 +3,10 @@ import Event from './Event';
 
 
 const showEvents = (props) =>{
-    let summa = 0;
-    props.events.forEach(el => {
-      summa += Number.parseFloat(el.price);
-    });
+    // let summa = 0;
+    // props.events.forEach(el => {
+    //   summa += Number.parseFloat(el.price);
+    // });
     return(
       <div>
         <h2>Избранное</h2>
@@ -16,7 +16,7 @@ const showEvents = (props) =>{
           <Event onDelete={props.onDelete} key={el.id} item = {el}/>
         ))}
         {/* ?  #6 8:38 format - для корректного отображения суммы*/}
-        <p className='summa'>Сумма: {new Intl.NumberFormat().format(summa)}</p> 
+        {/* <p className='summa'>Сумма: {new Intl.NumberFormat().format(summa)}</p>  */}
         </div>
       </div>
     )

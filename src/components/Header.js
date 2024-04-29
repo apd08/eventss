@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {FaHeart} from "react-icons/fa" //change for new icon
+import {FaHeart, FaShoppingCart} from "react-icons/fa" //change for new icon
 import { Link } from 'react-router-dom';
 
 import Event from './Event';
@@ -35,15 +35,15 @@ export default function Header(props) {
   return (
     <header>
         <div>
-            <Link to='main' className='logo'>Events</Link>
+            <Link to='' className='logo'>Events</Link>
             
             <ul className='nav'>
               {/* <Link to='Register' className='nav-li'>Зарегестрировться</Link>   */}
               <Link to='register' className='nav-li'>Кабинет пользователя</Link>
-              <Link to='about' className='nav-li'>О нас</Link>
+              <Link to='about' className='nav-li'>Контакты</Link>
             </ul>
             <Link to='favourites'><FaHeart  className='event-button'/> </Link>
-
+            <Link to='cart'><FaShoppingCart  className='event-button cart-button'/></Link>
             {/* <FaHeart onClick={() => setEventOpen(eventOpen = !eventOpen)} className={`event-button ${eventOpen && 'active'}`}/> */}
             {/* change icon, объявляем анонимную функцию при нажатии, значние eventOpen меняется на противоложное */}
 
@@ -54,7 +54,7 @@ export default function Header(props) {
               </div>
             )} */}
         </div>
-        <div className='presentation'></div>
+        {/* <div className='presentation'></div> */}
       
     </header>
   )
