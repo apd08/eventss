@@ -112,7 +112,7 @@ header ul.nav .nav-li:hover{
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
  .event-page .empty h2{
@@ -131,13 +131,23 @@ header ul.nav .nav-li:hover{
     margin-top: 20px; */
 
     /* max-width: 30%; */
-    margin-bottom: 50px;
+    /* margin-bottom: 50px;
     background: #f5f5f5;
     overflow: hidden;
     position: relative;
     padding-bottom: 20px;
-    max-height: 30%; /*add*/
+    max-height: 30%; /*add
+    border-radius: 10px; */
+    max-width: 30%;
+    margin-bottom: 20px;
+    background: #fff;
+    border: 1px solid rgba(15, 14, 14, 0.607);
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 20px;
+    max-height: 20%; /*add*/
     border-radius: 10px;
+    
 }
 
 .event-page .item-img{
@@ -149,12 +159,14 @@ header ul.nav .nav-li:hover{
 
  .event-page .item h2{
     font-size: 20px;
-    margin-bottom: 10px;
+    /*margin-bottom: 10px; */
+    margin: 10px 20px;
 }
 
  .event-page .item p{
     color:#797979;
     font-weight: 600;
+    margin: 10px 20px;
 }
 
  .event-page .item .delete-icon{
@@ -162,6 +174,7 @@ header ul.nav .nav-li:hover{
     float: right;
     position: relative;
     top: -25px;
+    margin-right: 20px;
     cursor: pointer;
     transition: color, transform 500ms ease;
 }
@@ -214,7 +227,7 @@ header .presentation::before{
 }
 
 .categories{
-    background: #f2f2f2;
+    background: #eef1537e;
     border-radius:60px;
     height: 40px;
     padding-top: 5px;
@@ -272,14 +285,18 @@ header .presentation::before{
 main{
     display: flex;
     width: 100%;
+    height: 100%;
+    align-content: start;
     flex-wrap: wrap;
+    /* flex-direction: row; */
     justify-content: space-between;
 }
 
 main .item{
     max-width: 30%;
     margin-bottom: 50px;
-    background: #f5f5f5;
+    background: #fff;
+    border: 1px solid rgba(15, 14, 14, 0.607);
     overflow: hidden;
     position: relative;
     padding-bottom: 20px;
@@ -423,6 +440,7 @@ footer{
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
+    cursor: pointer;
 }
 
 .places select:focus {
@@ -436,4 +454,18 @@ footer{
 
 .places select option:hover {
     background-color: lightgray;
+}
+
+.button-cart{
+    padding: 10px 20px;
+    background-color: #007bff; /* Цвет фона кнопки */
+    color: #fff;  /* Цвет текста */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+    
+ .button-cart:hover{
+        background-color: #0056b3;  /* Цвет фона кнопки при наведении */;
 }

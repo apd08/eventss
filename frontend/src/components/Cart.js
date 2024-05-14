@@ -1,5 +1,6 @@
 import React from 'react'
 import CartEvent from './CartEvent';
+// import '.'
 
 const showEvents = (props) =>{
     let summa = 0;
@@ -10,13 +11,12 @@ const showEvents = (props) =>{
       <div>
         <h2>Корзина</h2>
         <div className='favourites-events'>
-        {/*фигурные скобки для вывода html-кода*/}
         {props.cart.map(el => ( 
           <CartEvent onDeleteCart={props.onDeleteCart} key={el.id} item = {el}/>
         ))}
-        {/* ?  #6 8:38 format - для корректного отображения суммы*/}
         <p className='summa'>Сумма: {new Intl.NumberFormat().format(summa)}</p> 
         </div>
+        <button className='button-cart'>Купить</button>
       </div>
     )
   }

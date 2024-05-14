@@ -1,0 +1,1 @@
+Nest.js : npm i -g @nestjs/cli (для подключения к бд)

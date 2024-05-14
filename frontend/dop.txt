@@ -4,7 +4,7 @@ installed react: npm install redux
 
 библиотека лоя иконок: npm i react-icons
        npm install @mui/material @ emotion/react @emotion/styled
-
+Nest.js: $ npm i -g @nestjs/cli (для бд)
 измененные названия файлов:
 Order.js = Event.js
 
