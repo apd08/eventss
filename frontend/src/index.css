@@ -80,7 +80,6 @@ header ul.nav .nav-li:hover{
     margin-right: 20px;
 }
 
-/*щтука появляется при нажатии на корзину*/
  .event-page{
     /* display: flex; */
     width: 100%;
@@ -98,6 +97,70 @@ header ul.nav .nav-li:hover{
 
     /* padding: 20px; */
     padding-bottom: 0;
+}
+
+/*штука появляется при нажатии на корзину*/
+.shop-cart{
+    /* flex-wrap: wrap; 
+    justify-content: space-between; */
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 450px;
+    background: #fafafa; 
+    -webkit-box-shadow: 4px 5px 15px -7px #606060;
+    box-shadow: 4px 5px 15px -7px #606060;
+    z-index: 1000;
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+.shop-cart .item-cart{
+    width: 100%;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.shop-cart .item-cart img{
+    width: 70px;
+    float: left;
+    margin-right: 20px;
+}
+
+.shop-cart .item-cart h2{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.shop-cart .empty h2{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.shop-cart .item-cart p{
+    color:#797979;
+    font-weight: 600;
+}
+
+.delete-icon-cart{
+    float: right;
+    position: relative;
+    top: -25px;
+}
+
+.delete-icon-cart{
+    color:#ca5252;
+    float: right;
+    position: relative;
+    top: -35px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: color, transform 500ms ease;
+}
+
+.delete-icon-cart:hover{
+    color:#d83030;
+    transform: scale(1.5);
 }
 
 .event-page img{
@@ -464,6 +527,8 @@ footer{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
     
  .button-cart:hover{

@@ -11,13 +11,13 @@ const handleCheckboxChange = (event) => {
 export default class CartEvent extends Component {
   render() {
     return (
-        <div className='item'>
+        <div className='item-cart'>
         <img src={"./img/" + this.props.item.img}/>
        <h2>{this.props.item.title}</h2>
        {/* <p>{this.props.item.desc}</p> */}
        <p>{this.props.item.price}</p> 
-       <FaTrash className='delete-icon' onClick={() => this.props.onDeleteCart(this.props.item.id)}/>
-       <input type='checkbox' onChange={handleCheckboxChange} />
+       <FaTrash className='delete-icon delete-icon-cart' onClick={() => this.props.onDeleteCart(this.props.item.id)}/>
+       {/* <input type='checkbox' onChange={handleCheckboxChange} /> */}
      </div>
     )
   }

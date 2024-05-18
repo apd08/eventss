@@ -114,7 +114,7 @@ class App extends React.Component {
   render(){
     return (
       <div className="wrapper">
-        <Header/>
+        <Header cart={this.state.cart} onDeleteCart={this.deleteCart}/>
         {/* <Header events={this.state.events} onDelete={this.deleteEvent}/> */}
 
         {/* <Categories chooseCategory={this.chooseCategory}/> */}
@@ -158,7 +158,7 @@ class App extends React.Component {
         {/* <Route path="/register" element={<AuthRootComponent />} /> */}
         <Route path="/about" element={<AboutUs/>}/>
         <Route path="/favourites" element={<Favourites events={this.state.events} onDelete={this.deleteEvent}/>} />
-        <Route path="/cart" element={<Cart cart={this.state.cart} onDeleteCart={this.deleteCart}/>} />
+        {/* <Route path="/cart" element={<Cart cart={this.state.cart} onDeleteCart={this.deleteCart}/>} /> */}
 
         
         <Route path="*" element={<ErrorPage/>} />
